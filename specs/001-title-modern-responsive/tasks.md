@@ -42,12 +42,12 @@ Goal: Public homepage with language grid and language detail pages, trend visual
 
 Goal: Auth users can bookmark languages and retrieve bookmarks. Independent test: bookmark persists across sessions.
 
-- [ ] T025 [US2] Create Bookmark model and repository in backend/src/models/bookmark.ts and backend/src/services/bookmarkService.ts - backend/src/models/bookmark.ts, backend/src/services/bookmarkService.ts
-- [ ] T026 [US2] Implement POST /api/user/bookmarks and GET /api/user/bookmarks endpoints in backend/src/controllers/bookmarks.ts - backend/src/controllers/bookmarks.ts
-- [ ] T027 [US2] Add DB unit/integration tests for bookmark CRUD using Testcontainers or local MongoDB - backend/tests/integration/test_bookmarks.js
-- [ ] T028 [US2] Create frontend bookmark button component and integrate with user session at frontend/app/components/ui/BookmarkButton.tsx and frontend/app/hooks/use-bookmarks.ts - frontend/app/components/ui/BookmarkButton.tsx, frontend/app/hooks/use-bookmarks.ts
-- [ ] T029 [US2] Create frontend bookmarks page at frontend/app/bookmarks/page.tsx showing user bookmarks - frontend/app/bookmarks/page.tsx
-- [ ] T030 [US2] Add E2E test for bookmark flow via Playwright (login, bookmark, verify) - playwright/tests/bookmark.spec.ts
+- [x] T025 [US2] Create Bookmark model and repository in backend/src/models/bookmark.ts and backend/src/services/bookmarkService.ts - backend/src/models/bookmark.ts, backend/src/services/bookmarkService.ts
+- [x] T026 [US2] Implement POST /api/user/bookmarks and GET /api/user/bookmarks endpoints in backend/src/controllers/bookmarks.ts - backend/src/controllers/bookmarks.ts
+- [x] T027 [US2] Add DB unit/integration tests for bookmark CRUD using Testcontainers or local MongoDB - backend/tests/integration/test_bookmarks.js
+- [x] T028 [US2] Create frontend bookmark button component and integrate with user session at frontend/app/components/ui/BookmarkButton.tsx and frontend/app/hooks/use-bookmarks.ts - frontend/app/components/ui/BookmarkButton.tsx, frontend/app/hooks/use-bookmarks.ts
+- [x] T029 [US2] Create frontend bookmarks page at frontend/app/bookmarks/page.tsx showing user bookmarks - frontend/app/bookmarks/page.tsx
+- [x] T030 [US2] Add E2E test for bookmark flow via Playwright (login, bookmark, verify) - playwright/tests/bookmark.spec.ts
 
 ## Phase 5: User Story 3 - Submit Testimonial & Contact (Priority: P2)
 
