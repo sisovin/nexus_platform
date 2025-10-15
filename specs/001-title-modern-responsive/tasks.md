@@ -53,12 +53,12 @@ Goal: Auth users can bookmark languages and retrieve bookmarks. Independent test
 
 Goal: Accept testimonials and contact form with validation; moderation workflow. Independent test: valid submission recorded as pending.
 
-- [ ] T031 [US3] Create Testimonial model and controller in backend/src/models/testimonial.ts and backend/src/controllers/testimonials.ts - backend/src/models/testimonial.ts, backend/src/controllers/testimonials.ts
-- [ ] T032 [US3] Implement POST /api/testimonials with validation and sanitation in backend/src/controllers/testimonials.ts - backend/src/controllers/testimonials.ts
-- [ ] T033 [US3] Create frontend testimonial form component at frontend/app/components/sections/TestimonialForm.tsx and page integration - frontend/app/components/sections/TestimonialForm.tsx
-- [ ] T034 [US3] Implement moderation admin view for testimonials at backend/admin/tests or admin UI - backend/src/controllers/admin/testimonialsAdmin.ts, frontend/app/admin/testimonials/page.tsx
-- [ ] T035 [US3] Add unit tests for validation logic and integration test for testimonial submission - backend/tests/integration/test_testimonials.js, frontend/tests/unit/TestimonialForm.test.tsx
-- [ ] T036 [US3] Add contract test for POST /api/testimonials - tests/contract/test_testimonials.js
+- [x] T031 [US3] Create Testimonial model and controller in backend/src/models/testimonial.ts and backend/src/controllers/testimonials.ts - backend/src/models/testimonial.ts, backend/src/controllers/testimonials.ts
+- [x] T032 [US3] Implement POST /api/testimonials with validation and sanitation in backend/src/controllers/testimonials.ts - backend/src/controllers/testimonials.ts
+- [x] T033 [US3] Create frontend testimonial form component at frontend/app/components/sections/TestimonialForm.tsx and page integration - frontend/app/components/sections/TestimonialForm.tsx
+- [x] T034 [US3] Implement moderation admin view for testimonials at backend/admin/tests or admin UI - backend/src/controllers/admin/testimonialsAdmin.ts, frontend/app/admin/testimonials/page.tsx
+- [x] T035 [US3] Add unit tests for validation logic and integration test for testimonial submission - backend/tests/integration/test_testimonials.js, frontend/tests/unit/TestimonialForm.test.tsx
+- [x] T036 [US3] Add contract test for POST /api/testimonials - tests/contract/test_testimonials.js
 
 ## Phase 6: User Story 4 - Admin Manage Languages & Analytics (Priority: P2)
 
