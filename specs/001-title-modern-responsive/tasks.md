@@ -64,12 +64,12 @@ Goal: Accept testimonials and contact form with validation; moderation workflow.
 
 Goal: Admin UI to create/update/delete languages and view analytics. Independent test: CRUD operations reflect on public listing.
 
-- [ ] T037 [US4] Implement admin auth check and role middleware in backend/src/middleware/adminAuth.ts - backend/src/middleware/adminAuth.ts
-- [ ] T038 [US4] Implement admin CRUD endpoints: POST/PUT/DELETE /api/admin/languages in backend/src/controllers/admin/languagesAdmin.ts - backend/src/controllers/admin/languagesAdmin.ts
-- [ ] T039 [US4] Create admin frontend pages for language management at frontend/app/admin/languages/\* - frontend/app/admin/languages/create.tsx, edit.tsx, list.tsx
-- [ ] T040 [US4] Implement analytics event collection in backend/src/lib/analytics.ts and endpoints GET /api/admin/analytics - backend/src/lib/analytics.ts, backend/src/controllers/admin/analytics.ts
-- [ ] T041 [US4] Add analytics dashboard page at frontend/app/admin/analytics/page.tsx - frontend/app/admin/analytics/page.tsx
-- [ ] T042 [US4] Add integration tests for admin CRUD and analytics collection - backend/tests/integration/test_admin_crud.js
+- [x] T037 [US4] Implement admin auth check and role middleware in backend/src/middleware/adminAuth.ts - backend/src/middleware/adminAuth.ts
+- [x] T038 [US4] Implement admin CRUD endpoints: POST/PUT/DELETE /api/admin/languages in backend/src/controllers/admin/languagesAdmin.ts - backend/src/controllers/admin/languagesAdmin.ts
+- [x] T039 [US4] Create admin frontend pages for language management at frontend/app/admin/languages/\* - frontend/app/admin/languages/create.tsx, edit.tsx, list.tsx
+- [x] T040 [US4] Implement analytics event collection in backend/src/lib/analytics.ts and endpoints GET /api/admin/analytics - backend/src/lib/analytics.ts, backend/src/controllers/admin/analytics.ts
+- [x] T041 [US4] Add analytics dashboard page at frontend/app/admin/analytics/page.tsx - frontend/app/admin/analytics/page.tsx
+- [x] T042 [US4] Add integration tests for admin CRUD and analytics collection - backend/tests/integration/test_admin_crud.js
 
 ## Phase 7: User Story 5 - Mobile Offline & Performance (Priority: P3)
 
