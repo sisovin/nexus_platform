@@ -1,0 +1,125 @@
+{
+    "budgets": [
+        {
+            "path": "/",
+            "resourceSizes": [
+                {
+                    "resourceType": "document",
+                    "budget": 14
+                },
+                {
+                    "resourceType": "script",
+                    "budget": 170
+                },
+                {
+                    "resourceType": "stylesheet",
+                    "budget": 25
+                },
+                {
+                    "resourceType": "image",
+                    "budget": 200
+                },
+                {
+                    "resourceType": "font",
+                    "budget": 100
+                },
+                {
+                    "resourceType": "other",
+                    "budget": 10
+                }
+            ],
+            "resourceCounts": [
+                {
+                    "resourceType": "total",
+                    "budget": 150
+                },
+                {
+                    "resourceType": "script",
+                    "budget": 10
+                },
+                {
+                    "resourceType": "stylesheet",
+                    "budget": 5
+                },
+                {
+                    "resourceType": "image",
+                    "budget": 20
+                },
+                {
+                    "resourceType": "font",
+                    "budget": 3
+                }
+            ]
+        },
+        {
+            "path": "/languages",
+            "resourceSizes": [
+                {
+                    "resourceType": "document",
+                    "budget": 15
+                },
+                {
+                    "resourceType": "script",
+                    "budget": 180
+                },
+                {
+                    "resourceType": "stylesheet",
+                    "budget": 30
+                },
+                {
+                    "resourceType": "image",
+                    "budget": 250
+                }
+            ],
+            "resourceCounts": [
+                {
+                    "resourceType": "total",
+                    "budget": 160
+                },
+                {
+                    "resourceType": "script",
+                    "budget": 12
+                },
+                {
+                    "resourceType": "image",
+                    "budget": 25
+                }
+            ]
+        },
+        {
+            "path": "/languages/*",
+            "resourceSizes": [
+                {
+                    "resourceType": "document",
+                    "budget": 16
+                },
+                {
+                    "resourceType": "script",
+                    "budget": 190
+                },
+                {
+                    "resourceType": "stylesheet",
+                    "budget": 35
+                },
+                {
+                    "resourceType": "image",
+                    "budget": 300
+                }
+            ],
+            "resourceCounts": [
+                {
+                    "resourceType": "total",
+                    "budget": 170
+                },
+                {
+                    "resourceType": "script",
+                    "budget": 14
+                },
+                {
+                    "resourceType": "image",
+                    "budget": 30
+                }
+            ]
+        }
+    ]
+}

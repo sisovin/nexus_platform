@@ -1,0 +1,28 @@
+-- NexusPlatform.sq
+-- SQLDelight schema for offline caching
+
+CREATE TABLE language (
+    id TEXT PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT,
+    ranking INTEGER,
+    trend_data TEXT, -- JSON string for trend data
+    resources TEXT, -- JSON array of URLs
+    images TEXT, -- JSON array of image URLs
+    cached_at INTEGER NOT NULL, -- timestamp
+    last_synced_at INTEGER -- timestamp
+);
+
+CREATE TABLE bookmark (
+    id TEXT PRIMARY KEY NOT NULL,
+    user_id TEXT NOT NULL,
+    language_id TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    FOREIGN KEY (language_id) REFERENCES language(id) ON DELETE CASCADE
+);
+
+-- Indexes for better query performance
+CREATE INDEX idx_language_ranking ON language(ranking);
+CREATE INDEX idx_language_cached_at ON language(cached_at);
+CREATE INDEX idx_bookmark_user_id ON bookmark(user_id);
+CREATE INDEX idx_bookmark_language_id ON bookmark(language_id);

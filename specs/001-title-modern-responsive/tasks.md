@@ -75,12 +75,12 @@ Goal: Admin UI to create/update/delete languages and view analytics. Independent
 
 Goal: Mobile apps cache previously viewed language details and provide fast offline UX. Independent test: view details offline after caching.
 
-- [ ] T043 [US5] Implement SQLDelight schema and caching layer in mobile-apps/shared/src/commonMain/sqldelight schema files - mobile-apps/shared/
-- [ ] T044 [US5] Implement mobile sync/background update logic in mobile-apps/shared/src/commonMain/kotlin/sync/SyncManager.kt - mobile-apps/shared/src/commonMain/kotlin/sync/SyncManager.kt
-- [ ] T045 [US5] Add API client and offline fallback handling in mobile-apps/shared/src/commonMain for language detail fetch - mobile-apps/shared/src/commonMain/kotlin/network/ApiClient.kt
-- [ ] T046 [US5] Add mobile UI screens for language list and detail in androidApp/ and iosApp/ modules - mobile-apps/androidApp/src/main, mobile-apps/iosApp/
-- [ ] T047 [US5] Add automated mobile unit tests for caching logic and offline scenarios - mobile-apps/shared/tests/
-- [ ] T048 [US5] Add performance budget checks and Lighthouse CI integration for frontend - .github/workflows/lighthouse.yml, frontend/perf-budget.json
+- [x] T043 [US5] Implement SQLDelight schema and caching layer in mobile-apps/shared/src/commonMain/sqldelight schema files - mobile-apps/shared/
+- [x] T044 [US5] Implement mobile sync/background update logic in mobile-apps/shared/src/commonMain/kotlin/sync/SyncManager.kt - mobile-apps/shared/src/commonMain/kotlin/sync/SyncManager.kt
+- [x] T045 [US5] Add API client and offline fallback handling in mobile-apps/shared/src/commonMain for language detail fetch - mobile-apps/shared/src/commonMain/kotlin/network/ApiClient.kt
+- [x] T046 [US5] Add mobile UI screens for language list and detail in androidApp/ and iosApp/ modules - mobile-apps/androidApp/src/main, mobile-apps/iosApp/
+- [x] T047 [US5] Add automated mobile unit tests for caching logic and offline scenarios - mobile-apps/shared/tests/
+- [x] T048 [US5] Add performance budget checks and Lighthouse CI integration for frontend - .github/workflows/lighthouse.yml, frontend/perf-budget.json
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
