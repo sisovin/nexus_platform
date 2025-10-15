@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Nexus Platform Public API - Modern responsive website + mobile apps
+  version: 1.0.0
+servers:
+  - url: https://api.example.com
+paths:
+  /api/languages:
+    get:
+      summary: Get list of languages
+      responses:
+        "200":
+          description: OK
+  /api/languages/{id}:
+    get:
+      summary: Get language detail
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+  /api/user/bookmarks:
+    get:
+      summary: Get user's bookmarks
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Add a bookmark
+      responses:
+        "201":
+          description: Created
+  /api/testimonials:
+    get:
+      summary: Get testimonials
+      responses:
+        "200":
+          description: OK
+    post:
+      summary: Create testimonial
+      responses:
+        "201":
+          description: Created
+  /api/auth/register:
+    post:
+      summary: Register user
+      responses:
+        "201":
+          description: Created
+  /api/auth/login:
+    post:
+      summary: Login user
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    Language:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        summary:
+          type: string
+    Testimonial:
+      type: object
+      properties:
+        id:
+          type: string
+        authorName:
+          type: string
+        content:
+          type: string
+    Bookmark:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        languageId:
+          type: string

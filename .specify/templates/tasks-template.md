@@ -156,6 +156,21 @@ Examples of foundational tasks (adjust based on your project):
 
 ---
 
+## Constitution-driven task types
+
+When generating tasks from a spec, ensure the following task categories are present if applicable:
+
+- [ ] contract: create/update OpenAPI/JSON Schema and Prisma schema files (path in `contracts/` and `prisma/`)
+- [ ] library: create or update shared library modules and publish/version plan
+- [ ] tests: unit/integration/E2E tests and contract tests; tests must be present and failing before implementation
+- [ ] observability: logging, Sentry/APM integration, health checks and metrics endpoints
+- [ ] security: input validation, secret handling, dependency scanning and remediation
+- [ ] accessibility: accessibility checks and test cases for public UI components
+- [ ] migration: DB migration scripts, seed data, and rollback steps
+- [ ] release: release notes template and semantic versioning change log entry task
+
+Ensure that each generated task includes exact file paths and acceptance criteria referencing constitution principles.
+
 ## Dependencies & Execution Order
 
 ### Phase Dependencies

@@ -113,3 +113,14 @@
 - **SC-002**: [Measurable metric, e.g., "System handles 1000 concurrent users without degradation"]
 - **SC-003**: [User satisfaction metric, e.g., "90% of users successfully complete primary task on first attempt"]
 - **SC-004**: [Business metric, e.g., "Reduce support tickets related to [X] by 50%"]
+
+## Constitution Compliance (mandatory)
+
+All specifications MUST include a short mapping that shows which constitution principles the feature depends on and how compliance will be satisfied. At minimum, include:
+
+- Principle mapping: list of principle names this spec relies on (e.g., "API-First, Contracted Data Models", "Test-First Quality Gates").
+- Contract files: paths to OpenAPI/JSON Schema or Prisma schema files that represent the canonical model for this feature.
+- Test Strategy: which tests will be written (unit/integration/E2E), locations for test files, and acceptance coverage targets that align with project coverage goals.
+- Migration impact: whether DB schema changes are required and reference to a migration plan in `prisma/`.
+
+Failure to include the Constitution Compliance section will mark the spec as incomplete and block Phase 2 tasks.

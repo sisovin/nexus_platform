@@ -1,0 +1,17 @@
+{
+    "name": "nexus-platform/web-php",
+    "description": "PHP fallback for Nexus Platform",
+    "type": "project",
+    "require": {
+        "php": ">=8.4",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "NexusPlatform\\": "src/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S localhost:8000 -t public"
+    }
+}

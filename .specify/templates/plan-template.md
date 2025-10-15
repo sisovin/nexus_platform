@@ -31,7 +31,20 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Constitution-derived gates (all items MUST be reviewed and either checked or justified):
+
+- [ ] Platform-First, Library-Backed: Project Structure includes shared/library modules or a plan to extract them; reuse and versioning strategy documented.
+- [ ] API-First, Contracted Data Models: Contracts/OpenAPI/JSON Schema files referenced in `contracts/` and Prisma schema identified as canonical model.
+- [ ] Test-First Quality Gates: Test plan exists (unit/integration/E2E), coverage targets recorded, and failing tests workflow described.
+- [ ] Observability & Performance: Logging, error reporting, health checks, and performance budgets (Lighthouse/APM targets) are specified.
+- [ ] Security, Secrets & Access Control: Secrets management, input validation, and least-privilege access considerations included.
+- [ ] Accessibility & SEO: Public surfaces and components include accessibility acceptance criteria and SSR/SEO notes if applicable.
+- [ ] Tech Stack & Constraints: Declared tech stack matches constitution constraints (Next.js, Node.js, Prisma, MongoDB, PHP 8.4, KMM or documented deviation).
+- [ ] CI/CD, Release & Versioning: Branching strategy, CI jobs, and semantic versioning/release notes requirement are noted.
+- [ ] Data Governance & Migration Safety: Prisma migrations/seed strategy or migration plan for breaking DB changes included.
+- [ ] Mobile Multiplatform: Shared KMM module plan, platform-specific UI choices (Compose/SwiftUI) and offline/caching strategy documented.
+
+If any gate is unchecked, include a short justification in the "Complexity Tracking" section and mark the plan as needing constitutional remediation before Phase 1.
 
 ## Project Structure
 
