@@ -48,7 +48,7 @@ async function verifyDatabase() {
 
         console.log('✅ Admin user verified:', adminUser.email)
 
-        // Verify sample data
+        // Verify sample user
         const sampleUser = await prisma.user.findFirst({
             where: { email: 'demo@nexusplatform.com' }
         })
@@ -73,7 +73,7 @@ async function verifyDatabase() {
 
         // Verify approved testimonials
         const approvedTestimonials = await prisma.testimonial.findMany({
-            where: { isApproved: true }
+            where: { status: 'APPROVED' }
         })
 
         if (approvedTestimonials.length === 0) {

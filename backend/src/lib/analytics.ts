@@ -1,13 +1,13 @@
 interface AnalyticsEvent {
     id: string
     eventType: string
-    userId?: string
-    languageId?: string
-    page?: string
-    userAgent?: string
-    ipAddress?: string
+    userId: string
+    languageId?: string | undefined
+    page?: string | undefined
+    userAgent?: string | undefined
+    ipAddress?: string | undefined
     timestamp: Date
-    metadata?: Record<string, any>
+    metadata?: Record<string, any> | undefined
 }
 
 class AnalyticsService {
@@ -15,6 +15,7 @@ class AnalyticsService {
 
     // Track page views
     trackPageView(userId: string | undefined, page: string, userAgent?: string, ipAddress?: string) {
+        if (!userId) return // Skip analytics for anonymous users
         this.recordEvent({
             eventType: 'page_view',
             userId,
@@ -27,6 +28,7 @@ class AnalyticsService {
 
     // Track language views
     trackLanguageView(userId: string | undefined, languageId: string, userAgent?: string, ipAddress?: string) {
+        if (!userId) return // Skip analytics for anonymous users
         this.recordEvent({
             eventType: 'language_view',
             userId,
@@ -49,6 +51,7 @@ class AnalyticsService {
 
     // Track testimonial submissions
     trackTestimonialSubmission(userId: string | undefined) {
+        if (!userId) return // Skip analytics for anonymous users
         this.recordEvent({
             eventType: 'testimonial_submit',
             userId,
@@ -57,7 +60,15 @@ class AnalyticsService {
     }
 
     // Generic event recording
-    private recordEvent(eventData: Omit<AnalyticsEvent, 'id' | 'timestamp'>) {
+    private recordEvent(eventData: {
+        eventType: string
+        userId: string
+        languageId?: string | undefined
+        page?: string | undefined
+        userAgent?: string | undefined
+        ipAddress?: string | undefined
+        metadata?: Record<string, any> | undefined
+    }) {
         const event: AnalyticsEvent = {
             id: this.generateId(),
             timestamp: new Date(),

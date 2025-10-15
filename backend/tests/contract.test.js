@@ -1,6 +1,12 @@
 const { expect } = require('chai')
 const supertest = require('supertest')
-const app = require('../backend/src/app') // Adjust path as needed
+const express = require('express')
+const routes = require('../dist/routes')
+
+// Create test app
+const app = express()
+app.use(express.json())
+app.use('/api', routes.default)
 
 describe('Languages API Contract', () => {
     it('should return languages list', async () => {
@@ -18,7 +24,7 @@ describe('Languages API Contract', () => {
     it('should return language by id', async () => {
         // Assuming a language exists from seed
         const response = await supertest(app)
-            .get('/api/languages/1') // Adjust ID
+            .get('/api/languages/javascript') // Use string ID from seed
             .expect(200)
 
         expect(response.body).to.have.property('id')

@@ -2,18 +2,20 @@ import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 import { AuthRequest } from './auth'
 
-export const requireAdmin = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const requireAdmin = (req: AuthRequest, res: Response, next: NextFunction): void => {
     const token = req.header('Authorization')?.replace('Bearer ', '')
 
     if (!token) {
-        return res.status(401).json({ error: 'Access denied. No token provided.' })
+        res.status(401).json({ error: 'Access denied. No token provided.' })
+        return
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any
 
         if (decoded.role !== 'ADMIN') {
-            return res.status(403).json({ error: 'Access denied. Admin role required.' })
+            res.status(403).json({ error: 'Access denied. Admin role required.' })
+            return
         }
 
         req.user = decoded
@@ -23,18 +25,20 @@ export const requireAdmin = (req: AuthRequest, res: Response, next: NextFunction
     }
 }
 
-export const requireSuperAdmin = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const requireSuperAdmin = (req: AuthRequest, res: Response, next: NextFunction): void => {
     const token = req.header('Authorization')?.replace('Bearer ', '')
 
     if (!token) {
-        return res.status(401).json({ error: 'Access denied. No token provided.' })
+        res.status(401).json({ error: 'Access denied. No token provided.' })
+        return
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any
 
         if (decoded.role !== 'SUPER_ADMIN') {
-            return res.status(403).json({ error: 'Access denied. Super admin role required.' })
+            res.status(403).json({ error: 'Access denied. Super admin role required.' })
+            return
         }
 
         req.user = decoded

@@ -2,35 +2,41 @@ import { Request, Response } from 'express'
 import { BookmarkService } from '../services/bookmarkService'
 import { AuthRequest } from '../middleware/auth'
 
-export const getUserBookmarks = async (req: AuthRequest, res: Response) => {
+export const getUserBookmarks = async (req: AuthRequest, res: Response): Promise<void> => {
     try {
         const userId = req.user?.id
         if (!userId) {
-            return res.status(401).json({ error: 'Unauthorized' })
+            res.status(401).json({ error: 'Unauthorized' })
+            return
         }
 
         const bookmarks = await BookmarkService.getUserBookmarks(userId)
         res.json(bookmarks)
+        return
     } catch (error) {
         console.error('Error fetching bookmarks:', error)
         res.status(500).json({ error: 'Failed to fetch bookmarks' })
+        return
     }
 }
 
-export const addBookmark = async (req: AuthRequest, res: Response) => {
+export const addBookmark = async (req: AuthRequest, res: Response): Promise<void> => {
     try {
         const userId = req.user?.id
         if (!userId) {
-            return res.status(401).json({ error: 'Unauthorized' })
+            res.status(401).json({ error: 'Unauthorized' })
+            return
         }
 
         const { languageId } = req.body
         if (!languageId) {
-            return res.status(400).json({ error: 'Language ID is required' })
+            res.status(400).json({ error: 'Language ID is required' })
+            return
         }
 
         const result = await BookmarkService.toggleBookmark(userId, languageId)
         res.json(result)
+        return
     } catch (error: any) {
         console.error('Error toggling bookmark:', error)
         if (error.message === 'Bookmark already exists') {
@@ -38,5 +44,6 @@ export const addBookmark = async (req: AuthRequest, res: Response) => {
         } else {
             res.status(500).json({ error: 'Failed to toggle bookmark' })
         }
+        return
     }
 }

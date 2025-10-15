@@ -12,6 +12,8 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    command: --replSet rs0 --bind_ip localhost,mongodb
     networks:
       - nexus-network
 

@@ -13,6 +13,7 @@ export const createUser = async (data: { name: string; email: string; password: 
         data: {
             name: data.name,
             email: data.email,
+            password: data.password,
             role: 'USER'
         }
     })

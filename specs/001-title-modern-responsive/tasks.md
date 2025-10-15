@@ -89,7 +89,7 @@ Goal: Mobile apps cache previously viewed language details and provide fast offl
 - [x] T051 [ ] Create release process docs and semantic-release configuration - .github/release.yml, docs/release-process.md
 - [x] T052 [ ] Run dependency security scans and remediate critical issues - devops/security/
 - [x] T053 [ ] Update docs/quickstart.md with final environment variables and run instructions - specs/001-title-modern-responsive/quickstart.md
-- [x] T054 [ ] Finalize migrations and seed data; run a full migration test in CI - backend/prisma/migrations/, backend/prisma/seed.ts
+- [x] T054 [x] Finalize migrations and seed data; run a full migration test in CI - backend/prisma/migrations/, backend/prisma/seed.ts
 
 ## Dependencies & Execution Order
 
@@ -99,9 +99,9 @@ Goal: Mobile apps cache previously viewed language details and provide fast offl
 
 ## Parallel Example: User Story 1
 
-- [ ] T020 [US1] Run contract tests for /api/languages
-- [ ] T021 [US1] Implement frontend LanguagesGrid component
-- [ ] T022 [US1] Implement frontend LanguageDetail page
+- [x] T020 [US1] Run contract tests for /api/languages
+- [x] T021 [US1] Implement frontend LanguagesGrid component
+- [x] T022 [US1] Implement frontend LanguageDetail page
 
 ## Implementation Strategy
 

@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Router } from 'express'
 import { getLanguages, getLanguageById } from '../controllers/languages'
 import { getUserBookmarks, addBookmark } from '../controllers/bookmarks'
 import { submitTestimonial, getTestimonials, updateTestimonial } from '../controllers/testimonials'
@@ -18,7 +18,7 @@ import {
 } from '../controllers/admin/analytics'
 import { authenticate, requireAdmin } from '../middleware/auth'
 
-const router = express.Router()
+const router: Router = express.Router()
 
 router.get('/languages', getLanguages)
 router.get('/languages/:id', getLanguageById)

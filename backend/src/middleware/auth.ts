@@ -9,11 +9,12 @@ export interface AuthRequest extends Request {
     }
 }
 
-export const authenticate = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const authenticate = (req: AuthRequest, res: Response, next: NextFunction): void => {
     const token = req.header('Authorization')?.replace('Bearer ', '')
 
     if (!token) {
-        return res.status(401).json({ error: 'Access denied' })
+        res.status(401).json({ error: 'Access denied' })
+        return
     }
 
     try {
@@ -25,9 +26,10 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
     }
 }
 
-export const requireAdmin = (req: AuthRequest, res: Response, next: NextFunction) => {
+export const requireAdmin = (req: AuthRequest, res: Response, next: NextFunction): void => {
     if (req.user?.role !== 'ADMIN') {
-        return res.status(403).json({ error: 'Admin access required' })
+        res.status(403).json({ error: 'Admin access required' })
+        return
     }
     next()
 }

@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react'
 import { apiClient } from '../../lib/api-client'
 
+interface Language {
+    id: string
+    name: string
+    summary: string | null
+    ranking: number | null
+}
+
 interface Bookmark {
     id: string
     languageId: string
+    language: Language
     createdAt: string
 }
 
