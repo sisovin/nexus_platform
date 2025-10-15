@@ -1,0 +1,106 @@
+groups:
+  - name: nexus_platform_alerts
+    rules:
+      # Application Health
+      - alert: NexusBackendDown
+        expr: up{job="nexus-backend"} == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nexus Platform Backend is down"
+          description: "Nexus Platform Backend has been down for more than 5 minutes."
+
+      - alert: NexusFrontendDown
+        expr: up{job="nexus-frontend"} == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nexus Platform Frontend is down"
+          description: "Nexus Platform Frontend has been down for more than 5 minutes."
+
+      # Performance Alerts
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{job="nexus-backend"}[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High response time detected"
+          description: "95th percentile response time is {{ $value }}s for the last 5 minutes."
+
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5..", job="nexus-backend"}[5m]) / rate(http_requests_total{job="nexus-backend"}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }} for the last 5 minutes."
+
+      # Database Alerts
+      - alert: MongoDBDown
+        expr: up{job="mongodb"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "MongoDB is down"
+          description: "MongoDB has been down for more than 2 minutes."
+
+      - alert: HighDBConnections
+        expr: mongodb_connections_current > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High database connections"
+          description: "MongoDB has {{ $value }} active connections."
+
+      # System Resource Alerts
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is {{ $value }}% on {{ $labels.instance }}."
+
+      - alert: HighMemoryUsage
+        expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 90
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value }}% on {{ $labels.instance }}."
+
+      - alert: LowDiskSpace
+        expr: (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Low disk space"
+          description: "Disk space is below 10% on {{ $labels.instance }}."
+
+      # Business Metrics Alerts
+      - alert: LowUserActivity
+        expr: rate(user_sessions_total[1h]) < 1
+        for: 1h
+        labels:
+          severity: info
+        annotations:
+          summary: "Low user activity detected"
+          description: "User session rate is below normal levels."
+
+      - alert: HighBookmarkRate
+        expr: rate(bookmark_created_total[5m]) > 10
+        for: 2m
+        labels:
+          severity: info
+        annotations:
+          summary: "High bookmark activity"
+          description: "Bookmark creation rate is unusually high."

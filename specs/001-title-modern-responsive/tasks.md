@@ -84,12 +84,12 @@ Goal: Mobile apps cache previously viewed language details and provide fast offl
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T049 [ ] [P] Add accessibility fixes and run automated AX checks, document WCAG AA manual spot-checks - frontend/accessibility-report.md
-- [ ] T050 [ ] Implement monitoring dashboards and alerts (Sentry/Prometheus/Datadog) - devops/observability/
-- [ ] T051 [ ] Create release process docs and semantic-release configuration - .github/release.yml, docs/release-process.md
-- [ ] T052 [ ] Run dependency security scans and remediate critical issues - devops/security/
-- [ ] T053 [ ] Update docs/quickstart.md with final environment variables and run instructions - specs/001-title-modern-responsive/quickstart.md
-- [ ] T054 [ ] Finalize migrations and seed data; run a full migration test in CI - backend/prisma/migrations/, backend/prisma/seed.ts
+- [x] T049 [ ] [P] Add accessibility fixes and run automated AX checks, document WCAG AA manual spot-checks - frontend/accessibility-report.md
+- [x] T050 [ ] Implement monitoring dashboards and alerts (Sentry/Prometheus/Datadog) - devops/observability/
+- [x] T051 [ ] Create release process docs and semantic-release configuration - .github/release.yml, docs/release-process.md
+- [x] T052 [ ] Run dependency security scans and remediate critical issues - devops/security/
+- [x] T053 [ ] Update docs/quickstart.md with final environment variables and run instructions - specs/001-title-modern-responsive/quickstart.md
+- [x] T054 [ ] Finalize migrations and seed data; run a full migration test in CI - backend/prisma/migrations/, backend/prisma/seed.ts
 
 ## Dependencies & Execution Order
 

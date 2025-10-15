@@ -1,0 +1,50 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+scrape_configs:
+  # Nexus Platform Backend
+  - job_name: "nexus-backend"
+    static_configs:
+      - targets: ["backend:3001"]
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+
+  # Nexus Platform Frontend (if exposing metrics)
+  - job_name: "nexus-frontend"
+    static_configs:
+      - targets: ["frontend:3000"]
+    metrics_path: "/api/metrics"
+    scrape_interval: 30s
+
+  # MongoDB
+  - job_name: "mongodb"
+    static_configs:
+      - targets: ["mongodb:27017"]
+    metrics_path: "/metrics"
+    scrape_interval: 30s
+
+  # Node.js process metrics
+  - job_name: "node-exporter"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+
+  # System metrics
+  - job_name: "system-metrics"
+    static_configs:
+      - targets: ["prometheus-node-exporter:9100"]
+
+  # Docker containers
+  - job_name: "docker"
+    static_configs:
+      - targets: ["docker-exporter:9323"]
+    scrape_interval: 30s

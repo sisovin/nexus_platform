@@ -1,0 +1,131 @@
+# Sentry Configuration for Nexus Platform
+
+# Application Configuration
+sentry:
+  dsn: ${SENTRY_DSN}
+  environment: ${NODE_ENV:-development}
+  release: ${RELEASE_VERSION:-latest}
+
+  # Performance monitoring
+  traces_sample_rate: 1.0
+  profiles_sample_rate: 1.0
+
+  # Error tracking
+  before_send: |
+    def before_send(event, hint):
+        # Filter out development errors
+        if event.get('environment') == 'development':
+            return None
+
+        # Sanitize sensitive data
+        if 'request' in event:
+            request = event['request']
+            if 'data' in request:
+                # Remove sensitive fields
+                sensitive_fields = ['password', 'token', 'api_key', 'secret']
+                for field in sensitive_fields:
+                    if field in request['data']:
+                        request['data'][field] = '[FILTERED]'
+
+        return event
+
+  # User feedback
+  integrations:
+    - name: sentry.javascript.browser
+      options:
+        replaysOnErrorSampleRate: 1.0
+        replaysSessionSampleRate: 0.1
+
+# Release tracking
+release:
+  name: ${RELEASE_VERSION}
+  environment: ${NODE_ENV}
+  projects:
+    - nexus-platform-frontend
+    - nexus-platform-backend
+
+# Alert rules
+alerts:
+  - name: "High Error Rate"
+    conditions:
+      - metric: "error.rate"
+        operator: ">"
+        threshold: 0.05
+        time_window: "5m"
+    actions:
+      - type: "slack"
+        channel: "#alerts"
+        message: "High error rate detected: {{value}}%"
+
+  - name: "Slow Response Time"
+    conditions:
+      - metric: "response.time.p95"
+        operator: ">"
+        threshold: 2000
+        time_window: "5m"
+    actions:
+      - type: "email"
+        to: "devops@nexusplatform.com"
+        subject: "Slow response time alert"
+
+  - name: "Database Connection Issues"
+    conditions:
+      - metric: "db.connection.errors"
+        operator: ">"
+        threshold: 5
+        time_window: "1m"
+    actions:
+      - type: "pagerduty"
+        service_key: ${PAGERDUTY_SERVICE_KEY}
+
+# Performance monitoring
+performance:
+  # Frontend performance budgets
+  budgets:
+    - name: "First Contentful Paint"
+      metric: "fcp"
+      threshold: 1800
+      unit: "ms"
+
+    - name: "Largest Contentful Paint"
+      metric: "lcp"
+      threshold: 2500
+      unit: "ms"
+
+    - name: "First Input Delay"
+      metric: "fid"
+      threshold: 100
+      unit: "ms"
+
+    - name: "Cumulative Layout Shift"
+      metric: "cls"
+      threshold: 0.1
+      unit: "score"
+
+  # Backend performance monitoring
+  transactions:
+    - name: "API Response Time"
+      operation: "http.server"
+      threshold: 1000
+
+    - name: "Database Query Time"
+      operation: "db.query"
+      threshold: 100
+
+# Custom metrics
+metrics:
+  - name: "user.bookmarks"
+    type: "counter"
+    description: "Number of bookmarks created"
+
+  - name: "language.views"
+    type: "counter"
+    description: "Number of language detail views"
+
+  - name: "testimonial.submissions"
+    type: "counter"
+    description: "Number of testimonial submissions"
+
+  - name: "admin.actions"
+    type: "counter"
+    description: "Number of admin actions performed"
